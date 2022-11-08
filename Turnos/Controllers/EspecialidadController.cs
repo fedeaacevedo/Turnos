@@ -52,5 +52,33 @@ namespace Turnos.Controllers
             return View(especialidad);
         }
 
+        public IActionResult Delete(int? id)
+        {
+            //si el ID no es valido, not found
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var especialidad = _context.Especialidad.FirstOrDefault(e => e.IdEspecialidad == id);
+
+            if(especialidad == null)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var especialidad = _context.Especialidad.Find(id);
+            _context.Especialidad.Remove(especialidad);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

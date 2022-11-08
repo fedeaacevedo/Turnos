@@ -1,0 +1,25 @@
+﻿@model Turnos.Models.Especialidad
+
+<h3>¿Seguro desea eliminar la especialidad?</h3>
+<div>
+    <dl>
+        <dt>
+           @* Nos muestra el nombre del campo*@
+            @Html.DisplayNameFor(modelo => modelo.Descripcion)
+        </dt>
+        <dd>
+            @*Nos muestra el dato guardado en el campo *@
+            @Html.DisplayFor(modelo => modelo.Descripcion)
+        </dd>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="IdEspecialidad"/>
+            <input type="submit" value="Eliminar" />
+        </form>
+
+        <div>
+            <a asp-action="Index">Volver</a>
+        </div>
+
+    </dl>
+</div>
